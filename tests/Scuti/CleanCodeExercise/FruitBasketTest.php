@@ -4,7 +4,7 @@ namespace Scuti\CleanCodeExercise;
 // use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 require_once(__DIR__ . '/../../../src/Scuti/CleanCodeExercise/FruitBasket.php');
 use PHPUnit\Framework\TestCase;
-use FruitBasket;
+use Scuti\CleanCodeExercise\FruitBasket;
 
 class FruitBasketTest extends TestCase
 {
@@ -13,7 +13,7 @@ class FruitBasketTest extends TestCase
     public function testCanInstantiate()
     {
         $fruitBasket = new FruitBasket('me', self::FRUITS);
-        $this->assertInstanceOf('fruit_Basket', $fruitBasket);
+        $this->assertInstanceOf(FruitBasket::class, $fruitBasket);
 
         return $fruitBasket;
     }
