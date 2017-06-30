@@ -1,9 +1,10 @@
 <?php
 namespace Scuti\CleanCodeExercise;
 
+// use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 require_once(__DIR__ . '/../../../src/Scuti/CleanCodeExercise/FruitBasket.php');
 use PHPUnit\Framework\TestCase;
-use fruit_Basket as FruitBasket;
+use FruitBasket;
 
 class FruitBasketTest extends TestCase
 {
@@ -22,10 +23,10 @@ class FruitBasketTest extends TestCase
      */
     public function testIsIterable(FruitBasket $fruitBasket)
     {
-        $i = 0;
+        $key = 0;
         foreach ($fruitBasket as $fruit) {
-            $this->assertSame(self::FRUITS[$i], $fruit);
-            $i++;
+            $this->assertSame(self::FRUITS[$key], $fruit);
+            $key++;
         }
     }
 
@@ -34,9 +35,8 @@ class FruitBasketTest extends TestCase
      */
     public function testIsArrayAccessable(FruitBasket $fruitBasket)
     {
-        for ($i = 0; $i < count(self::FRUITS); $i++) {
-            $this->assertSame(self::FRUITS[$i], $fruitBasket[$i]);
+        for ($key = 0; $key < count(self::FRUITS); $key++) {
+            $this->assertSame(self::FRUITS[$key], $fruitBasket[$key]);
         }
     }
 }
-

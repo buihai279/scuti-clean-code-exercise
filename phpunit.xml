@@ -22,4 +22,13 @@
          timeoutForLargeTests="60"
          verbose="false">
   <!-- ... -->
+  <testsuites>
+        <testsuite name="Feature Tests">
+            <directory suffix="Test.php">./tests</directory>
+        </testsuite>
+
+        <testsuite name="Unit Tests">
+            <directory suffix="Test.php">./tests</directory>
+        </testsuite>
+    </testsuites>
 </phpunit>
