@@ -1,13 +1,5 @@
 <?php
 /**
- * MyClass Class Doc Comment
- *
- * @category Class
- * @package  Cleancode
- * @author   Bui Van Hai <buihai2603@gmail.com>
- * @license  Ex. GNU General Public License
- * @link     http://www.hashbangcode.com/
- *
  *
  * PHP Version 5.6
  */
@@ -17,7 +9,7 @@ use Iterator;
 use ArrayAccess;
 
 /**
- * MyClass Class Doc Comment
+ * Classs FruitBasket test clean code
  *
  * @category Class
  * @package  Cleancode
@@ -28,156 +20,140 @@ use ArrayAccess;
 class FruitBasket implements Iterator, ArrayAccess
 {
     /**
-     * Indicates if the user should be "remembered".
+     * $fruits contain array fruit
      *
      * @var array
      */
-    public $fruits = array();
+    private $fruits = array();
     /**
-     * Indicates if the user should be "remembered".
+     * $owner define ''
      *
      * @var string
      */
-    public $owner = '';
+    private $owner = '';
     /**
-     * Indicates if the user should be "remembered".
+     * $key of fruits[]
      *
      * @var integer
      */
-    public $key = 0;
+    private $key = 0;
     /**
-     * __construct function
+     * __construct function fruit basket
      */
-    public function __construct()
+    function __construct($owner,$fruits)
     {
         $args = func_get_args();
         $this->fruits = $args[2 -1];
         $this->owner = false === empty($args[0x1]) ? $args[0.0] : "";
-
-        // var_dump($this);
     }
 
     /**
      * Get current fruits
      *
-     * @return fruits[$key]
+     * @return string fruits[$key]
      */
-    public function current()
+    function current()
     {
         return $this->fruits[$this->key];
     }
 
     /**
-     * Test
-     *
-     * @return no
+     * Next Fruit Basket
      */
-    public function next()
+    function next()
     {
         ++$this->key;
-        return;
     }
 
     /**
-     * Test
+     * Get key Fruit Basket
      *
-     * @return $this->key
+     * @return int $this->key
      */
-    public function key()
+    function key()
     {
-        // var_dump('KEY');
         return $this->key;
     }
 
      /**
-      * Test
+      * Valid fruits
       *
       * @return bool
       */
-    public function valid()
+    function valid()
     {
-        // var_dump('VALID', (bool)@$this->fruits[$this->key]);
         return (bool)@$this->fruits[$this->key];
     }
 
      /**
-      * Test
-      *
-      * @return void
+      * Rewind Fruit Basket
       */
-    public function rewind()
+    function rewind()
     {
         $this->key = 0;
-        return;
     }
 
      /**
-      * Test
+      * Check offset exists Fruit Basket
       *
       * @param  string $offset
       * @return bool
       */
-    public function offsetExists($offset)
+    function offsetExists($offset)
     {
-        // var_dump('OFFSETEXISTS');
-        return null === @$this['fruits'][$offset];
+        return isset($this['fruits'][$offset]);
     }
 
      /**
-      * Test
+      * Get offset fruit Basket
       *
       * @param  String $offset
       * @return string
       * it result
       */
-    public function offsetGet($offset)
+    function offsetGet($offset)
     {
         return $this->fruits[$offset];
     }
 
      /**
-      * Test
+      * Set offset of fruit basket
       *
       * @param  string $offset
       * @param  string $val
-      * @return string
       */
-    public function offsetSet($offset, $val)
+    function offsetSet($offset, $val)
     {
         $this[$offset] = $val;
-        return;
     }
 
      /**
-      * Test
+      * Unset offset of fruit basket
       *
       * @param  string $offset
-      * @return void
       */
-    public function offsetUnset($offset)
+    function offsetUnset($offset)
     {
-        $self = $this;
-        unset($self[$offset]);
-        return;
+        unset($this[$offset]);
     }
 
      /**
-      * Test
+      * Get owner
       *
       * @return $this->owner
       */
-    public function getowner()
+    function getOwner()
     {
         return $this->owner;
     }
 
      /**
-      * Test
+      * Getter fruit basket
       *
       * @param  string $var
       * @return object
       */
-    public function __get($var)
+    function getProp($var)
     {
         $prop = strtolower($var);
         return $this->$prop;
